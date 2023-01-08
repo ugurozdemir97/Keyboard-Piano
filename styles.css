@@ -1,0 +1,131 @@
+
+/* ---------------------- BACKGROUND COLOR AND TITLE ----------------------- */
+
+body {
+  font-family: 'Bakbak One', cursive;
+  background-color: #212730;
+  margin: auto 7%;
+
+  /* --- TO DISABLE TEXT SELECTING --- */
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.title {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 180px;
+  height: 180px;
+}
+
+h1 {
+  text-shadow: inset 0 0 4px white, 10px 0 10px #121E22;
+  color: #4ECCA3;
+  font-size: clamp(1.5rem, -0.875rem + 8.333vw, 5.5rem);
+}
+
+/* ------------------------------- OCTAVES ---------------------------------- */
+
+.octave-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+}
+
+.octave1,
+.octave2,
+.octave3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+/* ----------------------------- PIANO KEYS -------------------------------- */
+
+.key {position: relative;}
+
+.white {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    display: inline-block;
+    background-color: white;
+
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 525px;
+
+    border: 1px solid #212730;
+    cursor: pointer;
+    transition: box-shadow 0.05s, border 0.1s;
+}
+
+.white:hover {
+    box-shadow: 0 0 10px #4ECCA3;
+}
+
+.white:active {
+    background-color: #F7F7F7;
+    box-shadow: none;
+    border-width: 3px 3px 1px 3px;
+}
+
+.black {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(50%);
+
+    z-index: 2;
+    height: 180px;
+    width: 60%;
+
+    line-height: 310px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+
+    background-color: #000A29;
+    border: 1px solid #212730;
+    cursor: pointer;
+    transition: box-shadow 0.05s, border 0.1s;
+
+}
+
+.black:hover {
+    box-shadow: 0 0 10px #0089FF;
+}
+
+.black:active {
+    background-color: #00071F;
+    box-shadow: none;
+    margin: 3px 0;
+}
+
+/* ------------------- TOGGLING CLASSES WITH JS ------------------- */
+
+.clicked1 {
+    box-shadow: 0 0 10px #4ECCA3;
+    top: 3px;
+    left: 3px;
+}
+
+.clicked2 {
+    box-shadow: 0 0 10px #0089FF;
+    top: 3px;
+}
+
+/* ---------------- HIDE PIANO KEYS IN CERTAIN SCREEN SIZES -------------- */
+
+@media (max-width: 992px) {
+    .octave3 {display: none;}
+    .octave-container {grid-template-columns: 1fr 1fr;}
+}
+
+@media (max-width: 768px) {
+    .octave1 {display: none;}
+    .octave-container {grid-template-columns: 1fr;}
+}
